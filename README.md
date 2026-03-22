@@ -76,8 +76,8 @@ WorldCapitalsQuiz/
 
 ## 👥 Autoren
 
-- [Dein Name]
-- [Name deines Freundes]
+- Mustafa Al-Obaidi
+- Regis Tsafack
 
 ## 📝 Lizenz
 
