@@ -10,11 +10,12 @@ public class Player implements Comparable<Player> {
     private int score;
     private DifficultyLevel difficulty;
     private LocalDateTime date;
-    
+
     /**
      * Konstruktor
-     * @param name Spielername
-     * @param score Erreichte Punkte
+     * 
+     * @param name       Spielername
+     * @param score      Erreichte Punkte
      * @param difficulty Schwierigkeitsgrad
      */
     public Player(String name, int score, DifficultyLevel difficulty) {
@@ -23,7 +24,7 @@ public class Player implements Comparable<Player> {
         this.difficulty = difficulty;
         this.date = LocalDateTime.now();
     }
-    
+
     /**
      * Für Sortierung nach Score (höchster zuerst)
      */
@@ -32,24 +33,24 @@ public class Player implements Comparable<Player> {
         // TODO: Implementieren - höherer Score zuerst
         return Integer.compare(other.score, this.score);
     }
-    
+
     // TODO: Getter implementieren
     public String getName() {
         return name;
     }
-    
+
     public int getScore() {
         return score;
     }
-    
+
     public DifficultyLevel getDifficulty() {
         return difficulty;
     }
-    
+
     public LocalDateTime getDate() {
         return date;
     }
-    
+
     @Override
     public String toString() {
         // TODO: Formatierte Ausgabe
