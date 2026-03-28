@@ -54,7 +54,7 @@ public class QuizUI extends JFrame {
             topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             scoreLabel = new JLabel("Score: 0");
-            timerLabel = new JLabel("Time: 60");
+            timerLabel = new JLabel("Time: --:--");
 
             topPanel.add(scoreLabel);
             topPanel.add(timerLabel);
@@ -128,8 +128,22 @@ public class QuizUI extends JFrame {
      */
     private void startNewQuiz(DifficultyLevel difficulty) {
         // TODO: Quiz initialisieren
+        quiz.startNewQuiz(difficulty);
+
+        //  Score anzeigen
+            scoreLabel.setText("Score: " + quiz.getScore());
+
         // TODO: Tabelle füllen
+        tableModel.setRowCount(0); // Alte Zeilen löschen (falls neues Spiel)
+
+        // Für jedes Land in currentQuizCountries:
+        for (Country country : quiz.getCurrentQuizCountries()) {
+            // Zeile hinzufügen: Land-Name, leere Hauptstadt
+            tableModel.addRow(new Object[]{country.getName(), ""});
+        }
+
         // TODO: Timer starten
+        startTimer();
     }
     
     /**
@@ -150,7 +164,11 @@ public class QuizUI extends JFrame {
         // für jedes Land: tableModel.addRow(new Object[]{land.getName(), ""});
         
         countryTable = new JTable(tableModel);
+
         // TODO: Tabellen-Styling
+        // Beispiel Styling:
+        countryTable.setFont(new Font("Arial", Font.PLAIN, 14));
+        countryTable.setRowHeight(25);
     }
     
     /**
@@ -204,14 +222,28 @@ public class QuizUI extends JFrame {
         //   - Verbleibende Zeit aktualisiert
         //   - timerLabel aktualisiert
         //   - Bei Zeit abgelaufen: Quiz beenden
-        
+
+        // Timer: alle 1000ms (1 Sekunde) wird die Aktion ausgeführt
         countdownTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implementieren
+                int remaining = quiz.getRemainingTime();
+                // Sekunden in Minuten und Sekunden umrechnen
+                int minutes = remaining / 60;    // z.B. 330 / 60 = 5 Minuten
+                int seconds = remaining % 60;    // z.B. 330 % 60 = 30 Sekunden
+                
+                // Format: "Zeit: 05:30"
+                timerLabel.setText(String.format("Zeit: %02d:%02d", minutes, seconds));
+                // %02d bedeutet: 2 Stellen, mit führender 0 wenn nötig
+
+                if (remaining <= 0) {
+                    // Zeit ist abgelaufen!
+                    countdownTimer.stop();  // Timer stoppen
+                    showResults();          // Ergebnisse anzeigen
+                }
             }
         });
-        // countdownTimer.start();
+        countdownTimer.start();
     }
     
     /**
