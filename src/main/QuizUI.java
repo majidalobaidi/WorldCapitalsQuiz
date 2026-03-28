@@ -54,7 +54,7 @@ public class QuizUI extends JFrame {
             topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             scoreLabel = new JLabel("Score: 0");
-            timerLabel = new JLabel("Time: 60");
+            timerLabel = new JLabel("Time: --:--");
 
             topPanel.add(scoreLabel);
             topPanel.add(timerLabel);
