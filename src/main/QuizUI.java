@@ -54,7 +54,7 @@ public class QuizUI extends JFrame {
             topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             scoreLabel = new JLabel("Score: 0");
-            timerLabel = new JLabel("Time: --:--");
+            timerLabel = new JLabel("Time: 60");
 
             topPanel.add(scoreLabel);
             topPanel.add(timerLabel);
@@ -70,7 +70,7 @@ public class QuizUI extends JFrame {
             answerField = new JTextField(15);
             answerField.addActionListener(e -> handleAnswer());
 
-            submitButton = new JButton("Submit");
+            submitButton = new JButton("Antworten");
             submitButton.addActionListener(e -> handleAnswer());
 
             bottomPanel.add(answerField);
@@ -86,7 +86,40 @@ public class QuizUI extends JFrame {
      */
     private void showDifficultySelection() {
         // TODO: Dialog mit Buttons für EASY, MEDIUM, HARD erstellen
+
+        Object[] options = {"Einfach", "Mittel", "Schwer"};
+
+        int choice = JOptionPane.showOptionDialog(
+            this,
+            "Wähle Schwierigkeitsgrad",
+            "Schwierigkeit",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]
+        );
+
+        DifficultyLevel selectedDifficultyLevel = null;
+
+        switch (choice) {
+            case 0:
+                selectedDifficultyLevel = DifficultyLevel.EASY;
+                break;
+            case 1:
+                selectedDifficultyLevel = DifficultyLevel.MEDIUM;
+                break;
+            case 2:
+                selectedDifficultyLevel = DifficultyLevel.HARD;             
+                break;
+            default:
+                break;
+        }
+
         // TODO: Nach Auswahl startNewQuiz() aufrufen
+        if (selectedDifficultyLevel != null)
+            startNewQuiz(selectedDifficultyLevel);
+
     }
     
     /**
