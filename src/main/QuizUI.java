@@ -3,9 +3,10 @@ package main;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import javafx.scene.layout.Border;
+//import javafx.scene.layout.Border;
 
 import java.awt.*;
+import java.util.List;
 import java.awt.event.*;
 
 /**
@@ -45,7 +46,7 @@ public class QuizUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        // TODO: Layout erstellen
+        // Layout erstellen
             // Hauptpanel mit BorderLayout
             setLayout(new BorderLayout());
 
@@ -75,6 +76,24 @@ public class QuizUI extends JFrame {
 
             bottomPanel.add(answerField);
             bottomPanel.add(submitButton);
+
+            // NEU: End Game Button
+            JButton endGameButton = new JButton("Spiel beenden");
+            endGameButton.addActionListener(e -> {
+                int choice = JOptionPane.showConfirmDialog(this,
+                    "Möchtest du das Spiel wirklich beenden?",
+                    "Spiel beenden",
+                    JOptionPane.YES_NO_OPTION);
+                
+                if (choice == JOptionPane.YES_OPTION) {
+                    countdownTimer.stop(); // Timer stoppen
+                    showResults();
+                }
+            });
+
+            bottomPanel.add(answerField);
+            bottomPanel.add(submitButton);
+            bottomPanel.add(endGameButton); // NEU
         
         add(topPanel, BorderLayout.NORTH);
         add(bottomPanel, BorderLayout.SOUTH);
@@ -85,7 +104,7 @@ public class QuizUI extends JFrame {
      * Zeigt Dialog zur Schwierigkeitsauswahl
      */
     private void showDifficultySelection() {
-        // TODO: Dialog mit Buttons für EASY, MEDIUM, HARD erstellen
+        //Dialog mit Buttons für EASY, MEDIUM, HARD erstellen
 
         Object[] options = {"Einfach", "Mittel", "Schwer"};
 
@@ -116,7 +135,7 @@ public class QuizUI extends JFrame {
                 break;
         }
 
-        // TODO: Nach Auswahl startNewQuiz() aufrufen
+        //Nach Auswahl startNewQuiz() aufrufen
         if (selectedDifficultyLevel != null)
             startNewQuiz(selectedDifficultyLevel);
 
@@ -127,13 +146,13 @@ public class QuizUI extends JFrame {
      * @param difficulty Gewählter Schwierigkeitsgrad
      */
     private void startNewQuiz(DifficultyLevel difficulty) {
-        // TODO: Quiz initialisieren
+        //Quiz initialisieren
         quiz.startNewQuiz(difficulty);
 
-        //  Score anzeigen
+        //Score anzeigen
             scoreLabel.setText("Score: " + quiz.getScore());
 
-        // TODO: Tabelle füllen
+        //Tabelle füllen
         tableModel.setRowCount(0); // Alte Zeilen löschen (falls neues Spiel)
 
         // Für jedes Land in currentQuizCountries:
@@ -142,7 +161,7 @@ public class QuizUI extends JFrame {
             tableModel.addRow(new Object[]{country.getName(), ""});
         }
 
-        // TODO: Timer starten
+        //Timer starten
         startTimer();
     }
     
@@ -150,7 +169,7 @@ public class QuizUI extends JFrame {
      * Erstellt die Tabelle mit allen Ländern
      */
     private void createCountryTable() {
-        // TODO: JTable mit 2 Spalten erstellen: "Land" und "Hauptstadt"
+        //JTable mit 2 Spalten erstellen: "Land" und "Hauptstadt"
         // Spalten: Land | Hauptstadt
         String[] columnNames = {"Land", "Hauptstadt"};
         tableModel = new DefaultTableModel(columnNames, 0) {
@@ -160,12 +179,12 @@ public class QuizUI extends JFrame {
             }
         };
         
-        // TODO: Länder zur Tabelle hinzufügen
+        //Länder zur Tabelle hinzufügen
         // für jedes Land: tableModel.addRow(new Object[]{land.getName(), ""});
         
         countryTable = new JTable(tableModel);
 
-        // TODO: Tabellen-Styling
+        //Tabellen-Styling
         // Beispiel Styling:
         countryTable.setFont(new Font("Arial", Font.PLAIN, 14));
         countryTable.setRowHeight(25);
@@ -177,20 +196,57 @@ public class QuizUI extends JFrame {
     private void handleAnswer() {
         String answer = answerField.getText().trim();
         
-        // TODO: Aktuelles Land ermitteln (erstes unbeantwortetes)
-        // TODO: Antwort überprüfen mit quiz.checkAnswer()
-        // TODO: Bei korrekter Antwort:
-        //   - Hauptstadt in Tabelle eintragen
-        //   - Score aktualisieren
-        //   - Grüne Markierung
-        // TODO: Bei falscher Antwort:
-        //   - Rote Markierung
-        //   - Richtige Antwort zeigen (optional)
+        //Aktuelles Land ermitteln (erstes unbeantwortetes)
+        // Leere Antwort ignorieren
+        if (answer.isEmpty()) {
+            return;
+        }
+        
+        // Gehe durch ALLE Länder und prüfe ob die Antwort passt
+        boolean found = false;
+        
+        for (Country country : quiz.getCurrentQuizCountries()) {
+            // Überspringe bereits beantwortete Länder
+            if (country.isAnswered()) {
+                continue;
+            }
+            
+            // Prüfe ob die Antwort zu diesem Land passt
+            if (quiz.checkAnswer(country, answer)) {
+                found = true;
+                
+                // Finde die Zeile in der Tabelle und fülle die Hauptstadt aus
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    String landInTabelle = (String) tableModel.getValueAt(i, 0);
+                    
+                    if (landInTabelle.equals(country.getName())) {
+                        // Hauptstadt eintragen
+                        tableModel.setValueAt(country.getCapital(), i, 1);
+                        // TODO: Zeile grün markieren (optional, später)
+                        break;
+                    }
+                }
+                
+                // Score aktualisieren
+                updateScoreDisplay();
+                // TODO: Bei falscher Antwort:
+                /*if(found==false) {
+                    // Optional: Zeige die richtige Antwort
+                    JOptionPane.showMessageDialog(this, 
+                        "Diese Antwort ist nicht in dieser Tabelle" ,
+                        "Falsch", 
+                        JOptionPane.ERROR_MESSAGE);
+                }*/
+                break; // Stoppe nach erstem Match
+            }
+        }
+
+        
         
         answerField.setText("");
         answerField.requestFocus();
         
-        // TODO: Überprüfen ob Quiz beendet
+        //Überprüfen ob Quiz beendet
         checkQuizCompletion();
     }
     
@@ -198,20 +254,100 @@ public class QuizUI extends JFrame {
      * Überprüft ob das Quiz abgeschlossen ist
      */
     private void checkQuizCompletion() {
-        // TODO: Prüfen ob alle Fragen beantwortet oder Zeit abgelaufen
-        // TODO: Wenn fertig: showResults() aufrufen
+        // Prüfe ob Zeit abgelaufen
+        if (quiz.isTimeUp()) {
+            showResults();
+            return;
+        }
+        
+        // Prüfe ob alle Länder beantwortet
+        boolean allAnswered = true;
+        for (Country country : quiz.getCurrentQuizCountries()) {
+            if (!country.isAnswered()) {
+                allAnswered = false;
+                break;
+            }
+        }
+        
+        if (allAnswered) {
+            showResults();
+        }
     }
     
     /**
      * Zeigt die Endergebnisse an
      */
     private void showResults() {
-        // TODO: Timer stoppen
-        // TODO: Finalen Score berechnen
-        // TODO: Namenseingabe für Highscore
-        // TODO: Highscore speichern
-        // TODO: Highscore-Liste anzeigen
-        // TODO: "Neues Spiel" Option anbieten
+        //Timer stoppen
+        if (countdownTimer != null) {
+            countdownTimer.stop();
+        }
+        // Fehlende Hauptstädte ausfüllen und zählen
+        int totalQuestions = quiz.getCurrentQuizCountries().size();
+        int correctAnswers = 0;
+        
+        for (Country country : quiz.getCurrentQuizCountries()) {
+            if (country.isAnswered()) {
+                correctAnswers++;
+            } else {
+                // Nicht beantwortet - fülle Hauptstadt aus (rot markieren)
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    String landInTabelle = (String) tableModel.getValueAt(i, 0);
+                    
+                    if (landInTabelle.equals(country.getName())) {
+                        // Hauptstadt mit Markierung eintragen
+                        tableModel.setValueAt("❌ " + country.getCapital(), i, 1);
+                        // TODO: Zeile rot markieren (später)
+                        break;
+                    }
+                }
+            }
+        }
+
+        //Finalen Score berechnen
+        int finalScore = quiz.calculateFinalScore();
+        // Ergebnis-Dialog
+        String message = String.format(
+            "Quiz beendet!\n\n" +
+            "Korrekte Antworten: %d / %d\n" +
+            "Dein Score: %d Punkte",
+            correctAnswers, totalQuestions, finalScore
+        );
+
+        JOptionPane.showMessageDialog(this, message, "Ergebnis", 
+                                    JOptionPane.INFORMATION_MESSAGE);
+
+        // Namenseingabe für Highscore
+        // Highscore speichern
+        // Highscore speichern
+        if (highscoreManager.isTopScore(finalScore)) {
+            String name = JOptionPane.showInputDialog(this, 
+                "Neuer Highscore! Gib deinen Namen ein:",
+                "Highscore",
+                JOptionPane.PLAIN_MESSAGE);
+            
+            if (name != null && !name.trim().isEmpty()) {
+                Player player = new Player(name.trim(), finalScore, quiz.getDifficulty());
+                highscoreManager.addHighscore(player);
+            }
+        }
+        //Highscore-Liste anzeigen
+        showHighscores();
+
+        //"Neues Spiel" Option anbieten
+        int choice = JOptionPane.showConfirmDialog(this,
+            "Möchtest du nochmal spielen?",
+            "Neues Spiel",
+            JOptionPane.YES_NO_OPTION);
+
+        if (choice == JOptionPane.YES_OPTION) {
+            // Tabelle leeren
+            tableModel.setRowCount(0);
+            // Neue Schwierigkeitsauswahl
+            showDifficultySelection();
+        } else {
+            System.exit(0);
+        }
     }
     
     /**
@@ -250,8 +386,7 @@ public class QuizUI extends JFrame {
      * Aktualisiert die Score-Anzeige
      */
     private void updateScoreDisplay() {
-        // TODO: scoreLabel aktualisieren
-        // scoreLabel.setText("Score: " + quiz.getScore());
+        scoreLabel.setText("Score: " + quiz.getScore());
     }
     
     /**
@@ -259,5 +394,15 @@ public class QuizUI extends JFrame {
      */
     private void showHighscores() {
         // TODO: Dialog mit Top 10 Highscores erstellen
+        List<Player> top10= highscoreManager.getTop10();
+        StringBuilder sb = new StringBuilder("=== TOP 10 HIGHSCORES ===\n\n");
+
+        for(int i=0; i< top10.size(); i++){
+            Player p = top10.get(i);
+            sb.append(String.format("%d. %s - %d Punkte (%s)\n", 
+            i+1, p.getName(), p.getScore(), p.getDifficulty().getDisplayName()));
+        }
+        JOptionPane.showMessageDialog(this, sb.toString(), 
+        "Highscores", JOptionPane.INFORMATION_MESSAGE);
     }
 }
