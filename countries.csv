@@ -1,60 +1,189 @@
-Deutschland,Berlin,Europa
-Frankreich,Paris,Europa
-Italien,Rom,Europa
-Spanien,Madrid,Europa
-Polen,Warschau,Europa
-Niederlande,Amsterdam,Europa
-Belgien,Brüssel,Europa
-Österreich,Wien,Europa
-Schweiz,Bern,Europa
-Portugal,Lissabon,Europa
-Griechenland,Athen,Europa
-Schweden,Stockholm,Europa
-Norwegen,Oslo,Europa
-Dänemark,Kopenhagen,Europa
-Finnland,Helsinki,Europa
-Tschechien,Prag,Europa
-Ungarn,Budapest,Europa
-Rumänien,Bukarest,Europa
-Bulgarien,Sofia,Europa
-Kroatien,Zagreb,Europa
-USA,Washington D.C.,Nordamerika
-Kanada,Ottawa,Nordamerika
-Mexiko,Mexiko-Stadt,Nordamerika
-Brasilien,Brasília,Südamerika
-Argentinien,Buenos Aires,Südamerika
-Chile,Santiago de Chile,Südamerika
-Peru,Lima,Südamerika
-Kolumbien,Bogotá,Südamerika
-Venezuela,Caracas,Südamerika
-Ecuador,Quito,Südamerika
-China,Peking,Asien
-Japan,Tokio,Asien
-Indien,Neu-Delhi,Asien
-Südkorea,Seoul,Asien
-Thailand,Bangkok,Asien
-Vietnam,Hanoi,Asien
-Indonesien,Jakarta,Asien
-Philippinen,Manila,Asien
-Malaysia,Kuala Lumpur,Asien
-Singapur,Singapur,Asien
-Ägypten,Kairo,Afrika
-Südafrika,Pretoria,Afrika
-Nigeria,Abuja,Afrika
-Kenia,Nairobi,Afrika
-Marokko,Rabat,Afrika
+Afghanistan,Kabul,Asien
+Aegypten,Kairo,Afrika
+Albanien,Tirana,Europa
 Algerien,Algier,Afrika
-Tunesien,Tunis,Afrika
-Ghana,Accra,Afrika
-Äthiopien,Addis Abeba,Afrika
-Tansania,Dodoma,Afrika
+Andorra,Andorra la Vella,Europa
+Angola,Luanda,Afrika
+Antigua und Barbuda,St Johns,Nordamerika
+Argentinien,Buenos Aires,Suedamerika
+Armenien,Eriwan,Asien
 Australien,Canberra,Ozeanien
-Neuseeland,Wellington,Ozeanien
+Aserbaidschan,Baku,Asien
+Aethiopien,Addis Abeba,Afrika
+Bahamas,Nassau,Nordamerika
+Bahrain,Manama,Asien
+Bangladesch,Dhaka,Asien
+Barbados,Bridgetown,Nordamerika
+Belarus,Minsk,Europa
+Belgien,Bruessel,Europa
+Belize,Belmopan,Nordamerika
+Benin,Porto-Novo,Afrika
+Bhutan,Thimphu,Asien
+Bolivien,Sucre,Suedamerika
+Bosnien und Herzegowina,Sarajevo,Europa
+Botsuana,Gaborone,Afrika
+Brasilien,Brasilia,Suedamerika
+Brunei,Bandar Seri Begawan,Asien
+Bulgarien,Sofia,Europa
+Burkina Faso,Ouagadougou,Afrika
+Burundi,Gitega,Afrika
+Chile,Santiago,Suedamerika
+China,Peking,Asien
+Costa Rica,San Jose,Nordamerika
+Cote dIvoire,Yamoussoukro,Afrika
+Dänemark,Kopenhagen,Europa
+Deutschland,Berlin,Europa
+Dominica,Roseau,Nordamerika
+Dominikanische Republik,Santo Domingo,Nordamerika
+Ecuador,Quito,Suedamerika
+El Salvador,San Salvador,Nordamerika
+Eritrea,Asmara,Afrika
+Estland,Tallinn,Europa
+Eswatini,Mbabane,Afrika
 Fidschi,Suva,Ozeanien
-Papua-Neuguinea,Port Moresby,Ozeanien
-Russland,Moskau,Europa/Asien
-Türkei,Ankara,Europa/Asien
-Saudi-Arabien,Riad,Asien
+Finnland,Helsinki,Europa
+Frankreich,Paris,Europa
+Gabun,Libreville,Afrika
+Gambia,Banjul,Afrika
+Georgien,Tiflis,Asien
+Ghana,Accra,Afrika
+Grenada,St Georges,Nordamerika
+Griechenland,Athen,Europa
+Guatemala,Guatemala Stadt,Nordamerika
+Guinea,Conakry,Afrika
+Guinea-Bissau,Bissau,Afrika
+Haiti,Port-au-Prince,Nordamerika
+Honduras,Tegucigalpa,Nordamerika
+Indien,Neu-Delhi,Asien
+Indonesien,Jakarta,Asien
+Irak,Bagdad,Asien
+Iran,Teheran,Asien
+Irland,Dublin,Europa
+Island,Reykjavik,Europa
 Israel,Jerusalem,Asien
-Vereinigte Arabische Emirate,Abu Dhabi,Asien
+Italien,Rom,Europa
+Jamaika,Kingston,Nordamerika
+Japan,Tokio,Asien
+Jemen,Sanaa,Asien
+Jordanien,Amman,Asien
+Kambodscha,Phnom Penh,Asien
+Kamerun,Jaunde,Afrika
+Kanada,Ottawa,Nordamerika
+Kap Verde,Praia,Afrika
+Kasachstan,Astana,Asien
 Katar,Doha,Asien
+Kenia,Nairobi,Afrika
+Kirgisistan,Bischkek,Asien
+Kiribati,South Tarawa,Ozeanien
+Kolumbien,Bogota,Suedamerika
+Komoren,Moroni,Afrika
+Kongo,Brazzaville,Afrika
+Kongo DR,Kinshasa,Afrika
+Kroatien,Zagreb,Europa
+Kuba,Havanna,Nordamerika
+Kuwait,Kuwait Stadt,Asien
+Laos,Vientiane,Asien
+Lesotho,Maseru,Afrika
+Lettland,Riga,Europa
+Libanon,Beirut,Asien
+Liberia,Monrovia,Afrika
+Libyen,Tripolis,Afrika
+Liechtenstein,Vaduz,Europa
+Litauen,Wilna,Europa
+Luxemburg,Luxemburg,Europa
+Madagaskar,Antananarivo,Afrika
+Malawi,Lilongwe,Afrika
+Malaysia,Kuala Lumpur,Asien
+Malediven,Male,Asien
+Mali,Bamako,Afrika
+Malta,Valletta,Europa
+Marokko,Rabat,Afrika
+Marshallinseln,Majuro,Ozeanien
+Mauretanien,Nouakchott,Afrika
+Mauritius,Port Louis,Afrika
+Mexiko,Mexiko Stadt,Nordamerika
+Mikronesien,Palikir,Ozeanien
+Moldau,Chisinau,Europa
+Monaco,Monaco,Europa
+Mongolei,Ulaanbaatar,Asien
+Montenegro,Podgorica,Europa
+Mosambik,Maputo,Afrika
+Myanmar,Naypyidaw,Asien
+Namibia,Windhoek,Afrika
+Nauru,Yaren,Ozeanien
+Nepal,Kathmandu,Asien
+Neuseeland,Wellington,Ozeanien
+Nicaragua,Managua,Nordamerika
+Niederlande,Amsterdam,Europa
+Niger,Niamey,Afrika
+Nigeria,Abuja,Afrika
+Nordkorea,Pjoengjang,Asien
+Nordmazedonien,Skopje,Europa
+Norwegen,Oslo,Europa
+Oman,Maskat,Asien
+Oesterreich,Wien,Europa
+Pakistan,Islamabad,Asien
+Palau,Ngerulmud,Ozeanien
+Panama,Panama Stadt,Nordamerika
+Papua-Neuguinea,Port Moresby,Ozeanien
+Paraguay,Asuncion,Suedamerika
+Peru,Lima,Suedamerika
+Philippinen,Manila,Asien
+Polen,Warschau,Europa
+Portugal,Lissabon,Europa
+Ruanda,Kigali,Afrika
+Rumaenien,Bukarest,Europa
+Russland,Moskau,Europa/Asien
+Saint Kitts und Nevis,Basseterre,Nordamerika
+Saint Lucia,Castries,Nordamerika
+Saint Vincent und die Grenadinen,Kingstown,Nordamerika
+Sambia,Lusaka,Afrika
+Samoa,Apia,Ozeanien
+San Marino,San Marino,Europa
+Sao Tome und Principe,Sao Tome,Afrika
+Saudi-Arabien,Riad,Asien
+Schweden,Stockholm,Europa
+Schweiz,Bern,Europa
+Senegal,Dakar,Afrika
+Serbien,Belgrad,Europa
+Seychellen,Victoria,Afrika
+Sierra Leone,Freetown,Afrika
+Simbabwe,Harare,Afrika
+Singapur,Singapur,Asien
+Slowakei,Bratislava,Europa
+Slowenien,Ljubljana,Europa
+Somalia,Mogadischu,Afrika
+Spanien,Madrid,Europa
+Sri Lanka,Sri Jayawardenepura Kotte,Asien
+Sudafrika,Pretoria,Afrika
+Sudan,Khartum,Afrika
+Suedkorea,Seoul,Asien
+SuedSudan,Dschuba,Afrika
+Suriname,Paramaribo,Suedamerika
+Tadschikistan,Duschanbe,Asien
+Tansania,Dodoma,Afrika
+Thailand,Bangkok,Asien
+Timor-Leste,Dili,Asien
+Togo,Lome,Afrika
+Tonga,Nukualofa,Ozeanien
+Trinidad und Tobago,Port of Spain,Nordamerika
+Tschad,NDjamena,Afrika
+Tschechien,Prag,Europa
+Tunesien,Tunis,Afrika
+Turkmenistan,Aschgabat,Asien
+Tuvalu,Funafuti,Ozeanien
+Tuerkei,Ankara,Europa/Asien
+Uganda,Kampala,Afrika
+Ukraine,Kiew,Europa
+Ungarn,Budapest,Europa
+Uruguay,Montevideo,Suedamerika
+USA,Washington,Nordamerika
+Usbekistan,Taschkent,Asien
+Vanuatu,Port Vila,Ozeanien
+Vatikanstadt,Rom,Europa
+Venezuela,Caracas,Suedamerika
+Vereinigte Arabische Emirate,Abu Dhabi,Asien
+Vereinigtes Koenigreich,London,Europa
+Vietnam,Hanoi,Asien
+Zentralafrikanische Republik,Bangui,Afrika
+Zypern,Nikosia,Europa

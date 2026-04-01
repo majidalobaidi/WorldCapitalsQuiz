@@ -144,7 +144,7 @@ public class Quiz {
      * @return Score (Punkte + Zeitbonus)
      */
     public int calculateFinalScore() {
-        // TODO: Score berechnen
+        // Score berechnen
         // Beispiel: Korrekte Antworten * 10 + Zeitbonus
         int timeBonus = Math.max(0, getRemainingTime() * 2); // 2 Punkte pro übrige Sekunde
         return score + timeBonus;
