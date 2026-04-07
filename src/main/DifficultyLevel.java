@@ -4,9 +4,9 @@ package main;
  * Schwierigkeitsgrade für das Quiz
  */
 public enum DifficultyLevel {
-    EASY("Einfach", 20, 60),      // 20 Länder, 60 Sekunden pro Frage
-    MEDIUM("Mittel", 50, 45),     // 50 Länder, 45 Sekunden pro Frage
-    HARD("Schwer", 195, 30);      // Alle ~195 Länder, 30 Sekunden pro Frage
+    EASY("Einfach", 20, 15),      // 20 Länder, 15 Sekunden pro Frage
+    MEDIUM("Mittel", 50, 10),     // 50 Länder, 10 Sekunden pro Frage
+    HARD("Schwer", 195, 7);      // Alle ~195 Länder, 7 Sekunden pro Frage
     
     private final String displayName;
     private final int numberOfCountries;
