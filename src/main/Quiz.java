@@ -146,7 +146,22 @@ public class Quiz {
     public int calculateFinalScore() {
         // Score berechnen
         // Beispiel: Korrekte Antworten * 10 + Zeitbonus
-        int timeBonus = Math.max(0, getRemainingTime() * 2); // 2 Punkte pro übrige Sekunde
+        //int timeBonus = Math.max(0, getRemainingTime() * 2); // 2 Punkte pro übrige Sekunde
+        // Prüfe ob alle Länder beantwortet wurden
+        boolean allAnswered = true;
+        for (Country country : currentQuizCountries) {
+            if (!country.isAnswered()) {
+                allAnswered = false;
+                break;
+            }
+        }
+        
+        // Zeitbonus NUR wenn alle Fragen beantwortet!
+        int timeBonus = 0;
+        if (allAnswered) {
+            timeBonus = Math.max(0, getRemainingTime() * 2); // 2 Punkte pro Sekunde
+        }
+        
         return score + timeBonus;
     }
     
